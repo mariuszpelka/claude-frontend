@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "dist",
+  "lib": {
+    "entryFile": "src/public-api.ts"
+  },
+  "allowedNonPeerDependencies": [
+    "@radix-ng/primitives",
+    "@p4/crm-mvp-components-tokens",
+    "@p4/crm-mvp-components-tailwind-preset",
+    "tslib"
+  ]
+}

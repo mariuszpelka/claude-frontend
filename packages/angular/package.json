@@ -1,0 +1,33 @@
+{
+  "name": "@p4/crm-mvp-components-angular",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "@radix-ng/primitives": "^0.50.0",
+    "@p4/crm-mvp-components-tokens": "workspace:*",
+    "@p4/crm-mvp-components-tailwind-preset": "workspace:*"
+  },
+  "peerDependencies": {
+    "@angular/core": "^18.0.0",
+    "@angular/common": "^18.0.0",
+    "@angular/cdk": "^18.0.0",
+    "rxjs": "^7.0.0"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "options": {
+          "command": "ng-packagr -p ng-package.json -c tsconfig.ng.json"
+        },
+        "outputs": ["{projectRoot}/dist"],
+        "inputs": [
+          "{projectRoot}/package.json",
+          "{projectRoot}/ng-package.json",
+          "{projectRoot}/tsconfig.ng.json",
+          "{projectRoot}/src/**/*"
+        ]
+      }
+    }
+  }
+}
