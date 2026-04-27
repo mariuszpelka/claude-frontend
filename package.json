@@ -4,20 +4,27 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@nx/eslint": "22.7.0",
     "@nx/eslint-plugin": "22.7.0",
     "@nx/js": "22.7.0",
+    "@nx/react": "22.7.0",
     "@nx/vitest": "22.7.0",
     "@swc-node/register": "1.11.1",
     "@swc/core": "1.15.8",
     "@swc/helpers": "0.5.18",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "20.19.9",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-vue": "^6.0.6",
     "@vitest/coverage-v8": "~4.1.0",
+    "@vue/test-utils": "^2.4.9",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
+    "happy-dom": "^15.11.7",
+    "jsdom": "^25.0.1",
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "22.7.0",
     "prettier": "^3.8.1",
@@ -26,7 +33,9 @@
     "typescript-eslint": "^8.40.0",
     "verdaccio": "^6.3.2",
     "vite": "^8.0.0",
-    "vitest": "~4.1.0"
+    "vitest": "~4.1.0",
+    "vue": "^3.5.33",
+    "vue-tsc": "^2.2.12"
   },
   "nx": {
     "includedScripts": [],
@@ -40,5 +49,9 @@
         }
       }
     }
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   }
 }

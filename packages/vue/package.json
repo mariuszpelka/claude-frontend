@@ -1,0 +1,40 @@
+{
+  "name": "@p4/crm-mvp-components-vue",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "@org/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "../tailwind-preset/dist/preset.css"
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ],
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "reka-ui": "^2.9.6",
+    "@p4/crm-mvp-components-tokens": "workspace:*",
+    "@p4/crm-mvp-components-tailwind-preset": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "options": {
+          "command": "vue-tsc --build tsconfig.lib.json"
+        }
+      }
+    }
+  }
+}
