@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Welcome" />
+
+# `@p4/crm-mvp-components`
+
+Multi-framework UI library: **React**, **Vue**, **Angular** — wspólne tokeny i Tailwind preset.
+
+## Storybooki per framework (dev)
+
+W trybie dev każdy framework ma osobny serwer Storybooka. Otwórz w nowej karcie:
+
+| Framework | URL |
+|---|---|
+| React  | [http://localhost:4400](http://localhost:4400) |
+| Vue    | [http://localhost:4401](http://localhost:4401) |
+| Angular| [http://localhost:4402](http://localhost:4402) |
+
+> Live composition (refs) z dev-serwerów jest niestabilne w Storybook v9 — w produkcyjnych buildach (`build-storybook`) refs są generowane jako static refs do podkatalogów `storybook-react/`, `storybook-vue/`, `storybook-angular/`.
+
+## Komponenty MVP w każdym frameworku
+
+- **Button** — primary / secondary / ghost / danger × sm / md / lg
+- **Tooltip** — top / right / bottom / left
+- **Tabs** — z panelami zawartości
+- **DropdownMenu** — z label, separator, items
+- **Dialog** — modal z title + description
+
+## Uruchamianie
+
+```bash
+pnpm nx run @p4/crm-mvp-components-react:storybook
+pnpm nx run @p4/crm-mvp-components-vue:storybook
+pnpm nx run @p4/crm-mvp-components-angular:storybook
+```

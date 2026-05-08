@@ -28,5 +28,18 @@
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "nx": {
+    "targets": {
+      "storybook": {
+        "command": "storybook dev -p 4400 --no-open",
+        "options": { "cwd": "{projectRoot}" }
+      },
+      "build-storybook": {
+        "command": "storybook build -o storybook-static",
+        "options": { "cwd": "{projectRoot}" },
+        "outputs": ["{projectRoot}/storybook-static"]
+      }
+    }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "name": "@p4/crm-mvp-storybook",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "nx": {
+    "targets": {
+      "storybook": {
+        "command": "storybook dev -p 4500 --no-open --ci",
+        "options": { "cwd": "{projectRoot}" }
+      },
+      "build-storybook": {
+        "command": "storybook build -o storybook-static",
+        "options": { "cwd": "{projectRoot}" },
+        "outputs": ["{projectRoot}/storybook-static"]
+      }
+    }
+  }
+}

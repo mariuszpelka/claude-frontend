@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.ng.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "outDir": "../../../dist/out-tsc/storybook",
+    "emitDecoratorMetadata": true,
+    "types": ["node"]
+  },
+  "files": ["./preview.ts"],
+  "include": [
+    "../src/**/*.stories.ts",
+    "../src/**/*.stories.tsx",
+    "../src/**/*.stories.mdx",
+    "../src/**/*.ts"
+  ],
+  "exclude": ["../src/**/*.spec.ts", "../src/**/*.test.ts"]
+}

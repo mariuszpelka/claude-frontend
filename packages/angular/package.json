@@ -27,6 +27,15 @@
           "{projectRoot}/tsconfig.ng.json",
           "{projectRoot}/src/**/*"
         ]
+      },
+      "storybook": {
+        "command": "pnpm exec ng run angular:storybook",
+        "options": { "cwd": "{workspaceRoot}" }
+      },
+      "build-storybook": {
+        "command": "pnpm exec ng run angular:build-storybook",
+        "options": { "cwd": "{workspaceRoot}" },
+        "outputs": ["{projectRoot}/storybook-static"]
       }
     }
   }
