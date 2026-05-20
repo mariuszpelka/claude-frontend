@@ -3,52 +3,49 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Inject,
   Input,
-  Optional,
   Output,
-  SkipSelf,
   ViewEncapsulation,
-  forwardRef,
-  signal,
 } from '@angular/core';
+import {
+  RdxTabsContentDirective,
+  RdxTabsListDirective,
+  RdxTabsRootDirective,
+  RdxTabsTriggerDirective,
+} from '@radix-ng/primitives/tabs';
 
 @Component({
   selector: 'p4-tabs',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RdxTabsRootDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  template: `<ng-content />`,
+  template: `
+    <div
+      rdxTabsRoot
+      [value]="value"
+      [defaultValue]="defaultValue"
+      (valueChange)="valueChange.emit($event)"
+    >
+      <ng-content />
+    </div>
+  `,
 })
 export class TabsComponent {
-  @Input() set defaultValue(v: string | undefined) {
-    if (v !== undefined && this.activeValue() === undefined) {
-      this.activeValue.set(v);
-    }
-  }
-  @Input() set value(v: string | undefined) {
-    if (v !== undefined) this.activeValue.set(v);
-  }
+  @Input() defaultValue: string | undefined;
+  @Input() value: string | undefined;
   @Output() valueChange = new EventEmitter<string>();
-
-  readonly activeValue = signal<string | undefined>(undefined);
-
-  setValue(v: string): void {
-    this.activeValue.set(v);
-    this.valueChange.emit(v);
-  }
 }
 
 @Component({
   selector: 'p4-tabs-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RdxTabsListDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
     <div
-      role="tablist"
+      rdxTabsList
       class="inline-flex h-10 items-center justify-center rounded-md bg-neutral-100 p-1 text-neutral-600"
     >
       <ng-content />
@@ -60,17 +57,14 @@ export class TabsListComponent {}
 @Component({
   selector: 'p4-tabs-trigger',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RdxTabsTriggerDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
     <button
-      type="button"
-      role="tab"
-      [attr.aria-selected]="parent.activeValue() === value"
-      [attr.data-state]="parent.activeValue() === value ? 'active' : 'inactive'"
+      rdxTabsTrigger
+      [value]="value"
       [disabled]="disabled"
-      (click)="parent.setValue(value)"
       class="inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-white data-[state=active]:text-neutral-900 data-[state=active]:shadow"
     >
       <ng-content />
@@ -80,43 +74,24 @@ export class TabsListComponent {}
 export class TabsTriggerComponent {
   @Input({ required: true }) value!: string;
   @Input() disabled = false;
-
-  constructor(
-    @SkipSelf() @Optional() @Inject(forwardRef(() => TabsComponent))
-    public parent: TabsComponent,
-  ) {
-    if (!parent) {
-      throw new Error('p4-tabs-trigger must be used inside p4-tabs');
-    }
-  }
 }
 
 @Component({
   selector: 'p4-tabs-content',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RdxTabsContentDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   template: `
-    @if (parent.activeValue() === value) {
-      <div
-        role="tabpanel"
-        class="mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-      >
-        <ng-content />
-      </div>
-    }
+    <div
+      rdxTabsContent
+      [value]="value"
+      class="mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+    >
+      <ng-content />
+    </div>
   `,
 })
 export class TabsContentComponent {
   @Input({ required: true }) value!: string;
-
-  constructor(
-    @SkipSelf() @Optional() @Inject(forwardRef(() => TabsComponent))
-    public parent: TabsComponent,
-  ) {
-    if (!parent) {
-      throw new Error('p4-tabs-content must be used inside p4-tabs');
-    }
-  }
 }
