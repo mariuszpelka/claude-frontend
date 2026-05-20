@@ -5,6 +5,7 @@ import {
   Input,
   ViewEncapsulation,
 } from '@angular/core';
+import { RdxPositionSide } from '@radix-ng/primitives/core';
 import {
   RdxTooltipContentDirective,
   RdxTooltipRootDirective,
@@ -29,7 +30,7 @@ export type TooltipSide = 'top' | 'right' | 'bottom' | 'left';
       <button rdxTooltipTrigger class="bg-transparent border-0 p-0 cursor-pointer">
         <ng-content />
       </button>
-      <ng-template rdxTooltipContent [side]="side" [sideOffset]="6">
+      <ng-template rdxTooltipContent [side]="rdxSide" [sideOffset]="6">
         <span
           class="z-50 overflow-hidden rounded-md bg-neutral-900 px-3 py-1.5 text-sm text-white shadow-md whitespace-nowrap"
         >
@@ -43,4 +44,8 @@ export class TooltipComponent {
   @Input({ required: true }) content!: string;
   @Input() side: TooltipSide = 'top';
   @Input() delayDuration = 300;
+
+  get rdxSide(): RdxPositionSide {
+    return this.side as unknown as RdxPositionSide;
+  }
 }
