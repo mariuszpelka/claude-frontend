@@ -6,10 +6,7 @@
   "linked": [
     [
       "@p4/crm-mvp-components-tokens",
-      "@p4/crm-mvp-components-tailwind-preset",
-      "@p4/crm-mvp-components-react",
-      "@p4/crm-mvp-components-vue",
-      "@p4/crm-mvp-components-angular"
+      "@p4/crm-mvp-components-tailwind-preset"
     ]
   ],
   "access": "restricted",
